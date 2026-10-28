@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} · {% endif %}{{ site.name }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <meta name="theme-color" content="#f8f9fb">
+  <meta property="og:type" content="{% if isPost %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ title or site.name }}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="/feed.xml">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="site-header wrap">
+    <a class="brand" href="/" aria-label="K0ST 博客首页"><span class="brand-icon" aria-hidden="true">K<span>_</span></span><span>K0ST <span class="brand-slash">/</span> <span class="brand-notes">Notes</span></span></a>
+    <nav aria-label="主导航">
+      <a href="/" {% if section == 'home' %}aria-current="page"{% endif %}>首页</a>
+      <a href="/posts/" {% if section == 'posts' %}aria-current="page"{% endif %}>文章</a>
+      <a href="/about/" {% if section == 'about' %}aria-current="page"{% endif %}>关于</a>
+      <a class="github-nav" href="{{ site.github }}" aria-label="GitHub 主页">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main id="main" class="wrap">{{ content | safe }}</main>
+  <footer class="site-footer wrap"><span>© 2026 K0ST <span class="footer-dot">·</span> 保持好奇，持续记录。</span><div><a href="/feed.xml">订阅 RSS</a><a href="{{ site.github }}">GitHub ↗</a></div></footer>
+</body>
+</html>

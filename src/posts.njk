@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+title: 所有文章
+section: posts
+permalink: /posts/
+---
+<section class="page-heading"><p class="eyebrow">THE ARCHIVE</p><h1>文章。</h1><p>把一路上的问题、尝试和收获，留在这里。</p></section>
+<div class="archive-toolbar"><span>共 {{ collections.articles | length }} 篇记录</span><label class="search-label"><span class="sr-only">搜索文章标题、简介或分类</span><input id="post-search" type="search" placeholder="搜索文章…" autocomplete="off"><span aria-hidden="true">⌕</span></label></div>
+<section class="archive-list" aria-label="文章列表">
+{% for post in collections.articles %}<article class="article-row" data-search="{{ post.data.title }} {{ post.data.description }} {{ post.data.category }}"><div class="post-meta"><time datetime="{{ post.date | isoDate }}">{{ post.date | dateLabel }}</time><span> / </span><span>{{ post.data.category }}</span></div><h2><a href="{{ post.url }}">{{ post.data.title }}<span class="row-arrow" aria-hidden="true">↗</span></a></h2><p>{{ post.data.description }}</p></article>{% endfor %}
+</section><p id="search-status" class="search-status" role="status" aria-live="polite"></p>
+<script src="/assets/search.js" defer></script>
